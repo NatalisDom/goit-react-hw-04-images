@@ -11,6 +11,6 @@ export const Button = ({ afterPage, showBtn }) => {
   }
 };
 Button.propTypes = {
-  nextPage: PropTypes.func.isRequired,
-  showPage: PropTypes.number.isRequired,
+  afterPage: PropTypes.func.isRequired,
+  showBtn: PropTypes.number.isRequired,
 };
