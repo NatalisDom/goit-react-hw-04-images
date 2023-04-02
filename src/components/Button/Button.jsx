@@ -1,16 +1,16 @@
 import css from 'components/Button/Button.module.css';
 import PropTypes from 'prop-types';
 
-export const Button = ({ afterPage, showBtn }) => {
+export const Button = ({ nextPage, showBtn }) => {
   if (showBtn !== 0) {
     return (
-      <button onClick={afterPage} className={css.button} type="button">
+      <button onClick={nextPage} className={css.button} type="button">
         Load more
       </button>
     );
   }
 };
 Button.propTypes = {
-  afterPage: PropTypes.func.isRequired,
+  nextPage: PropTypes.func.isRequired,
   showBtn: PropTypes.number.isRequired,
 };
