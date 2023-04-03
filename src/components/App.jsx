@@ -50,7 +50,6 @@ export const App = () => {
 
         setImg(prevImages => [...prevImages, ...base]);
       } catch (error) {
-       
         setError(error.mesage);
       } finally {
         tumblerLoader();

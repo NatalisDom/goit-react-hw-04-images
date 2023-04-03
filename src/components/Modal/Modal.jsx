@@ -3,7 +3,7 @@ import css from 'components/Modal/Modal.module.css';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-export const Modal = ({ onClose, children }) => {
+export const Modal = ({ onClose, children, src, tags }) => {
   useEffect(() => {
     const keydownImg = Event => {
       if (Event.code === 'Escape') {
@@ -16,7 +16,7 @@ export const Modal = ({ onClose, children }) => {
     return () => {
       window.removeEventListener('keydown', keydownImg);
     };
-  },   [onClose]);
+  }, [onClose]);
 
   const clickImg = event => {
     if (event.target === event.currentTarget) {
@@ -28,7 +28,10 @@ export const Modal = ({ onClose, children }) => {
 
   return createPortal(
     <div onClick={clickImg} className={css.overlay}>
-      <div className={css.modal}>{children}</div>
+      <div className={css.modal}>
+        {children}
+        <img className="container" src={src} alt={tags} />
+      </div>
     </div>,
     modalRoot
   );
@@ -37,4 +40,6 @@ export const Modal = ({ onClose, children }) => {
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
   onClose: PropTypes.func.isRequired,
+  src: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
 };

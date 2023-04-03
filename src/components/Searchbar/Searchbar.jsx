@@ -6,14 +6,20 @@ import PropTypes from 'prop-types';
 export const FormSearch = ({ submit }) => {
   const [query, setQuery] = useState('');
 
-  const Submit = e => {
-    e.preventDefault();
-    submit(query);
-  };
-
   const change = ({ target: { value } }) => {
     setQuery(value);
   };
+
+  const Submit = e => {
+    e.preventDefault();
+
+    submit(query);
+    reset();
+  };
+
+  function reset() {
+    setQuery('');
+  }
 
   return (
     <header className={css.searchbar}>
@@ -25,13 +31,14 @@ export const FormSearch = ({ submit }) => {
         </button>
 
         <input
+          name="query"
+          value={query}
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
           onChange={change}
           className={css.input}
           type="text"
-          
         />
       </form>
     </header>
