@@ -18,16 +18,10 @@ export const Modal = ({ onClose, children, src, tags }) => {
     };
   }, [onClose]);
 
-  const clickImg = event => {
-    if (event.target === event.currentTarget) {
-      onClose();
-    }
-  };
-
   const modalRoot = document.querySelector('#modal-root');
 
   return createPortal(
-    <div onClick={clickImg} className={css.overlay}>
+    <div onClick={onClose} className={css.overlay}>
       <div className={css.modal}>
         {children}
         <img className="container" src={src} alt={tags} />
